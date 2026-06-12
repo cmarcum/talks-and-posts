@@ -38,6 +38,7 @@ map_data <- st_transform(map_data, crs = 4326)
 pal_ac <- colorNumeric(palette = "inferno", domain = map_data$NO_AC_PE)
 
 interactive_map <- leaflet(map_data) %>%
+  setView(lng = -98.57, lat = 39.8, zoom = 4) %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
   addPolygons(
     fillColor = ~pal_ac(NO_AC_PE),
@@ -64,4 +65,4 @@ interactive_map <- leaflet(map_data) %>%
     position = "bottomright"
   )
 
-saveWidget(interactive_map, "lace_elderly_map.html", selfcontained = TRUE)
+saveWidget(interactive_map, "lace_o65_map.html", selfcontained = TRUE)
